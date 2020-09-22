@@ -1,0 +1,27 @@
+﻿<Project Sdk="Peachpie.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>a271793f-72bf-429d-9ec8-83c03559cbd6</ProjectGuid>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Product>Responsive File Manager</Product>
+    <Description>Responsive File Manager running on .NET Core with Peachpie</Description>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <NoWarn>PHP5011</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="**/*.php" Exclude="obj/**;bin/**" />
+
+    <Content Include="**/*.as;**/*.css;**/*.fla;**/*.gif;**/*.html;**/*.jar;**/*.jpg;**/*.js;**/*.json;**/*.png;**/*.svg;**/*.swf;**/*.txt" Exclude="obj/**;bin/**" CopyToOutputDirectory="PreserveNewest">
+      <PackagePath>contentFiles/any/netcoreapp3.1/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </Content>
+
+  </ItemGroup>
+
+</Project>

@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog", "MyBlog\MyBlog.csproj", "{AC7CA41B-76D6-490D-B18B-56D0885D42C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBlog", "MyBlog\MyBlog.csproj", "{AC7CA41B-76D6-490D-B18B-56D0885D42C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.Data", "MyBlog.Data\MyBlog.Data.csproj", "{1014F8EF-8108-4A5E-BCC0-9B68FA6BF3E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBlog.Data", "MyBlog.Data\MyBlog.Data.csproj", "{1014F8EF-8108-4A5E-BCC0-9B68FA6BF3E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.Models", "MyBlog.Model\MyBlog.Models.csproj", "{54856C5B-11BA-4714-A02F-B49C401A8D65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBlog.Models", "MyBlog.Model\MyBlog.Models.csproj", "{54856C5B-11BA-4714-A02F-B49C401A8D65}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. ResponsiveFilemanager", "1. ResponsiveFilemanager", "{B6BBC95D-DF01-4DD4-B5A1-1063FB64F6FC}"
+EndProject
+Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "ResponsiveFileManager", "ResponsiveFileManager\ResponsiveFileManager.msbuildproj", "{A271793F-72BF-429D-9EC8-83C03559CBD6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResponsiveFileManager.AspNetCore", "ResponsiveFileManager.AspNetCore\ResponsiveFileManager.AspNetCore.csproj", "{23B617AC-05B1-40FD-B63C-68705EA7092A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +33,21 @@ Global
 		{54856C5B-11BA-4714-A02F-B49C401A8D65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54856C5B-11BA-4714-A02F-B49C401A8D65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54856C5B-11BA-4714-A02F-B49C401A8D65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A271793F-72BF-429D-9EC8-83C03559CBD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A271793F-72BF-429D-9EC8-83C03559CBD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A271793F-72BF-429D-9EC8-83C03559CBD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A271793F-72BF-429D-9EC8-83C03559CBD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23B617AC-05B1-40FD-B63C-68705EA7092A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23B617AC-05B1-40FD-B63C-68705EA7092A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23B617AC-05B1-40FD-B63C-68705EA7092A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23B617AC-05B1-40FD-B63C-68705EA7092A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A271793F-72BF-429D-9EC8-83C03559CBD6} = {B6BBC95D-DF01-4DD4-B5A1-1063FB64F6FC}
+		{23B617AC-05B1-40FD-B63C-68705EA7092A} = {B6BBC95D-DF01-4DD4-B5A1-1063FB64F6FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F8B31B40-4D28-4040-9EB1-676CC8A061A5}
