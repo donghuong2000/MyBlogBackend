@@ -1,77 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyBlog.Data.Data;
-using MyBlog.Model;
+using MyBlog.Models;
 
 namespace MyBlog.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class PostController : Controller
+    public class UsersController : Controller
     {
         private readonly ApplicationDB _context;
 
-        public PostController(ApplicationDB context)
+        public UsersController(ApplicationDB context)
         {
             _context = context;
         }
 
-        
+        // GET: Admin/Users
         public async Task<IActionResult> Index()
         {
-            var applicationDB = _context.Posts.Include(p => p.User);
-            return View(await applicationDB.ToListAsync());
-        }
-
-        // GET: Admin/Post/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var post = await _context.Posts
-                .Include(p => p.User)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (post == null)
-            {
-                return NotFound();
-            }
-
-            return View(post);
-        }
-
-        // GET: Admin/Post/Create
+            return View(await _context.Users.ToListAsync());
+        }   
+        // GET: Admin/Users/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Post/Create
+        // POST: Admin/Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Content,Tags")] Post post)
+        public async Task<IActionResult> Create([Bind("Id,UserName,Password,AvatarUrl,Email,PhoneNumber")] User user)
         {
-            post.DateCreate = DateTime.Now;
-            post.Like = post.Share = 0;
-            post.UserID = 1;
             if (ModelState.IsValid)
             {
-                _context.Add(post);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (await _context.Users.FirstOrDefaultAsync(x => x.UserName == user.UserName) == null)
+                {
+                    _context.Add(user);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                ModelState.AddModelError("", "tài khoản đã tồn tại");
+                return View(user);
             }
-            return View(post);
+            return View(user);
         }
 
-        // GET: Admin/Post/Edit/5
+        // GET: Admin/Users/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -79,22 +61,22 @@ namespace MyBlog.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var post = await _context.Posts.FindAsync(id);
-            if (post == null)
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
             {
                 return NotFound();
             }
-            return View(post);
+            return View(user);
         }
 
-        // POST: Admin/Post/Edit/5
+        // POST: Admin/Users/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,Content,Tags")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UserName,Password,AvatarUrl,Email,PhoneNumber")] User user)
         {
-            if (id != post.ID)
+            if (id != user.Id)
             {
                 return NotFound();
             }
@@ -103,16 +85,12 @@ namespace MyBlog.Areas.Admin.Controllers
             {
                 try
                 {
-                    var temp = await _context.Posts.FindAsync(id);
-                    temp.Title = post.Title;
-                    temp.Content = post.Content;
-                    temp.Tags = post.Tags;
-                    _context.Update(temp);
+                    _context.Update(user);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PostExists(post.ID))
+                    if (!UserExists(user.Id))
                     {
                         return NotFound();
                     }
@@ -123,10 +101,10 @@ namespace MyBlog.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(post);
+            return View(user);
         }
 
-        // GET: Admin/Post/Delete/5
+        // GET: Admin/Users/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,30 +112,30 @@ namespace MyBlog.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var post = await _context.Posts
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (post == null)
+            var user = await _context.Users
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return View(post);
+            return View(user);
         }
 
-        // POST: Admin/Post/Delete/5
+        // POST: Admin/Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var post = await _context.Posts.FindAsync(id);
-            _context.Posts.Remove(post);
+            var user = await _context.Users.FindAsync(id);
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PostExists(int id)
+        private bool UserExists(int id)
         {
-            return _context.Posts.Any(e => e.ID == id);
+            return _context.Users.Any(e => e.Id == id);
         }
     }
 }

@@ -49,15 +49,14 @@ namespace MyBlog
             app.UseRouting();
 
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapControllerRoute(
                    name: "Admin",
                    pattern: "{area=Admin}/{controller=Home}/{action=Index}/{id?}");
+                
             });
         }
     }

@@ -23,7 +23,7 @@ namespace MyBlog.Model
         [ForeignKey("UserID")]
         public User User { get; set; }
 
-        public IEnumerable<Tag> Tags { get; set; }
+        public string Tags { get; set; }
 
 
 

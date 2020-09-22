@@ -1,9 +1,10 @@
-﻿@model IEnumerable<MyBlog.Model.Post>
+﻿@model IEnumerable<MyBlog.Models.User>
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1 class="h3 mb-2 text-gray-800">Tables</h1>
+h1 class="h3 mb-2 text-gray-800">Tables</h1>
 <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
 
 <!-- DataTales Example -->
@@ -16,21 +17,21 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Tag</th>
-                        <th>Date</th>
+                        <th>ID</th>
+                        <th>UserName</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>PostCount</th>
                         <th>Control</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Tag</th>
-                        <th>Date</th>
+                        <th>ID</th>
+                        <th>UserName</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>PostCount</th>
                         <th>Control</th>
                     </tr>
                 </tfoot>
@@ -38,17 +39,23 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <th>@item.ID</th>
-                            <th>@item.Title</th>
-                            <th>@item.User.UserName</th>
-                             <th>@item.Tags</th>
-                            <th>@item.DateCreate</th>
+                            
+                            <th>@item.Id</th>
+                            <th>@item.UserName</th>
+                            <th>@item.Email</th>
+                            <th>@item.PhoneNumber</th>
+                            <th>0</th>
                             <th>
-                              <div class="row d-flex justify-content-center">
-                                <button  class="btn btn-primary btn-sm">đã duyệt</button>
-                                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-secondary btn-sm">Sửa</a>
-                                <a href="/admin/post/delete/@item.ID" class="btn btn-danger btn-sm">Xóa</a>
-                               </div>
+                                <div class="row d-flex justify-content-center">
+                                    @if (@item.UserName != "admin")
+                                    {
+                                        <button class="btn btn-primary btn-sm">Lock</button>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary btn-sm">Sửa</a>
+                                        <a href="/admin/Users/delete/@item.Id" class="btn btn-danger btn-sm">Xóa</a>
+                                    }
+
+
+                                </div>
                             </th>
                         </tr>
                     }
@@ -65,5 +72,4 @@
     <!-- Page level custom scripts -->
     <script src="~/Admin/js/demo/datatables-demo.js"></script>
 }
-
 
