@@ -1,71 +1,83 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿.navbar {
+    background-color: rgba(22, 22, 22, 0.884) !important;
+    z-index: 1040 !important;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+.nav-item a {
+    color: white !important;
+    font-weight: bold !important;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: 0.2s;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.nav-item:hover > a {
+    background-color: white;
+    border-radius: 5px;
+    transition: 0.2s;
+    color: black !important;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.avatar {
+    border-radius: 50%;
+    margin-right: 10px;
+    height: 45px;
+    width: 45px;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.post-title {
+    text-decoration-line: none !important;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+.blog-footer {
+    background-color: rgba(22, 22, 22, 0.884) !important;
+    height: 100px;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.author-name {
+    font-weight: bold !important;
+    color: black;
+    font-size: 20px;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.none-line {
+    text-decoration-line: none !important;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
+.input-comment {
+    outline-width: 0px;
+    width: 100%;
+    height: 100px;
+    resize: none;
 }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+.action-post > a {
+    font-size: 35px;
+    color: rgba(22, 22, 22, 0.95);
+    padding-top: 100px;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+
+.sticky-sidebar {
+    position: absolute;
 }
+
+.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.sticky-bottom-bar {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+    background-color: rgba(22, 22, 22, 0.95);
+    font-size: 25px;
+    color: white;
+}
+
+    .sticky-bottom-bar a {
+        color: white;
+    }

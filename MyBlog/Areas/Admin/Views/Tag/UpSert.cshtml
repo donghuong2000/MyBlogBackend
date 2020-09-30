@@ -1,0 +1,46 @@
+﻿@model Tag
+@{
+    ViewData["Title"] = "UpSert";
+    var tt = "Create Tag";
+}
+
+<div class="container">
+    <form method="post">
+        <div class="row p-3 border">
+            @{
+                if (Model.Id != 0)
+                {
+                    tt = "Edit Tag";
+                }
+            }
+            <div class="col-12 border-bottom">
+
+                <h2 class="text-primary">@tt</h2>
+            </div>
+            <div class="col-8 pt-4">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Name"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Name" class="form-control" />
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-4">
+                        @if (Model.Id != 0)
+                        {
+                            <partial name="_EditAndBackPartialView" model="Model.Id" />
+                        }
+                        else
+                        {
+                            <partial name="_CreateAndBackPartialView" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

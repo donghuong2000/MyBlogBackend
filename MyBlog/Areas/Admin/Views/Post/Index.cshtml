@@ -1,69 +1,60 @@
-﻿@model IEnumerable<MyBlog.Model.Post>
+﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "POST Manager";
 }
 
-<h1 class="h3 mb-2 text-gray-800">Tables</h1>
-<p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
 
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Post</h6>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Tag</th>
-                        <th>Date</th>
-                        <th>Control</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Tag</th>
-                        <th>Date</th>
-                        <th>Control</th>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex">
+            <h6 class="p-2 m-0 font-weight-bold text-primary">Danh sách Tags</h6>
+            <a asp-action="Upsert" class="btn btn-primary btn-sm ml-auto">Thêm mới</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
                         <tr>
-                            <th>@item.ID</th>
-                            <th>@item.Title</th>
-                            <th>@item.User.UserName</th>
-                             <th>@item.Tags</th>
-                            <th>@item.DateCreate</th>
-                            <th>
-                              <div class="row d-flex justify-content-center">
-                                <button  class="btn btn-primary btn-sm">đã duyệt</button>
-                                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-secondary btn-sm">Sửa</a>
-                                <a href="/admin/post/delete/@item.ID" class="btn btn-danger btn-sm">Xóa</a>
-                               </div>
-                            </th>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th>Date</th>
+                            <th>Tags</th>
+                            <th>Comfirm</th>
+                            <th>Action</th>
                         </tr>
-                    }
-                </tbody>
-
-            </table>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th>Date</th>
+                            <th>Tags</th>
+                            <th>Comfirm</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         </div>
     </div>
 </div>
-@section Scripts {
+@section Scripts{
+    <!--nhớ thứ tự này nhas-->
     <script src="~/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="~/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- cái này là của thông báo-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="~/js/build/toastr.min.js"></script>
+    <script src="~/Admin/js/Post.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="~/Admin/js/demo/datatables-demo.js"></script>
+
 }
+@section csss{
+    <link href="~/js/build/toastr.css" rel="stylesheet" />
 
+}
 

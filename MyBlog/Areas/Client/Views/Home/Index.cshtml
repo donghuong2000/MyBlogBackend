@@ -1,0 +1,115 @@
+﻿@model MyBlog.Models.ViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class=" container">
+    <div class=" row">
+        <div class="col-md-8">
+            <div class=" d-flex justify-content-between">
+                <select class="btn btn-dark">
+                    <option value="">Mới nhất</option>
+                    <option value="">Cũ nhất</option>
+                    <option value="">Nhiều Lượt xem</option>
+                    <option value="">nhiều lượt like</option>
+                </select>
+            </div>
+            <!-- đây là bài viiets-->
+            @foreach (var item in Model.Posts)
+            {
+            <div class="card mb-5 mt-2">
+                <div class="card-header d-flex align-items-center">
+                    <a href="#">
+                        <img class="avatar" src="https://via.placeholder.com/150" alt="">
+                    </a>
+                    <a class="post-title" href="/Client/Home/Detail/@item.ID">
+                        <h5>@item.Title</h5>
+                    </a>
+
+                </div>
+
+                <div class="card-body">
+                    <div class="mb-3">
+                        @foreach (var tag in item.PostTags)
+                        {
+                            <a href="#" class="badge badge-secondary">@tag.Tag.Name</a>
+                        }
+
+
+                    </div>
+                    <div class=" row mb-3">
+                        <div class="col-4">
+                            <img class="img-fluid" src="https://via.placeholder.com/700x500" alt="">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-text">
+                                @if (item.Content.Length > 101)
+                                {
+
+                                    @Html.Raw(item.Content.Substring(0, 100).Replace("img",""))
+                                }
+                                else
+                                {
+                                    @Html.Raw(item.Content.Replace("img", ""))
+                                }
+                                ...
+                            </div>
+                            <div class="">@item.DateCreate</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="d-flex justify-content-center">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <h5 class="mb-4">Các bài viết mới nhất</h5>
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small>3 days ago</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small>Donec id elit non mi porta.</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small class="text-muted">3 days ago</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Donec id elit non mi porta.</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small class="text-muted">3 days ago</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Donec id elit non mi porta.</small>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

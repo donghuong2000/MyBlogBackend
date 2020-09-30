@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyBlog.Data.Data;
+using MyBlog.Data.Repository;
+using MyBlog.Data.Repository.IRepository;
 
 namespace MyBlog
 {
@@ -34,12 +36,9 @@ namespace MyBlog
             });
             services.AddDbContext<ApplicationDB>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("BlogDbContext")));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            services.AddResponsiveFileManager(options =>
-            {
-                //
-                options.MaxSizeUpload = 32;
-            });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,7 +59,7 @@ namespace MyBlog
             app.UseDefaultFiles();
             app.UseStaticFiles(); // shortcut for HostEnvironment.WebRootFileProvider
 
-            app.UseResponsiveFileManager();
+            
 
             app.UseRouting();
 
@@ -70,9 +69,13 @@ namespace MyBlog
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                   name: "Client",
+                   pattern: "{area=Client}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
                    name: "Admin",
                    pattern: "{area=Admin}/{controller=Home}/{action=Index}/{id?}");
-                
+               
+
             });
         }
     }

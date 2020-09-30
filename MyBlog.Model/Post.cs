@@ -18,12 +18,23 @@ namespace MyBlog.Model
 
         public int Share { get; set; }
 
-        public int UserID { get; set; }
+        public int? UserID { get; set; }
 
         [ForeignKey("UserID")]
         public User User { get; set; }
+        public bool Confirm { get; set; }
+        public ICollection<PostTag> PostTags { get; set; }
 
-        public string Tags { get; set; }
+        public override string ToString()
+        {
+            string t = "";
+            foreach (var item in PostTags)
+            {
+                t +=", "+item.Tag.Name;
+            }
+            return t.Substring(2);
+        }
+
 
 
 

@@ -1,0 +1,155 @@
+﻿@model MyBlog.Model.Post
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class=" container">
+    <div class=" row">
+        <div class="col-1 d-none d-lg-block">
+            <div class="action-post d-flex-column text-center sticky-top">
+                <a class=" none-line d-flex justify-content-center" href="">
+                    <img id="trigger" class="avatar mr-0" src="https://via.placeholder.com/150" alt="">
+
+                </a>
+                <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> </a>
+                <h5>@Model.Like</h5>
+                <a href="#"><i class="fa fa-comments" aria-hidden="true"></i></a><h5>20</h5>
+                <a href="#"><i class="fa fa-share" aria-hidden="true"></i></a><h5>@Model.Share</h5>
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="post">
+                <div class="header">
+                    <div class="author d-flex justify-content-between">
+                        <a class="none-line d-flex align-items-center" href="">
+                            <img class="avatar" src="https://via.placeholder.com/150" alt="">
+                            <div class="author-name">Nguyễn Đông Hướng</div>
+                        </a>
+                        <div>
+                            <small>@Model.DateCreate</small>
+                            <div>
+                                <i class="fas fa-heart"></i> @Model.Like
+                                <i class="fas fa-comments"></i> 20
+                                <i class="fas fa-share"></i> @Model.Share
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="my-3">
+                        @foreach (var item in Model.PostTags)
+                        {
+                            <a href="#" class="badge badge-secondary">@item.Tag.Name</a>
+                        }
+                    </div>
+                    <h1>
+                        @Model.Title
+                    </h1>
+                </div>
+                <div class="content">
+                    @Html.Raw(Model.Content)
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+        <div class="col-md-4 col-lg-3">
+            <h5 class="mb-4">Các bài viết mới nhất</h5>
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small>3 days ago</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small>Donec id elit non mi porta.</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small class="text-muted">3 days ago</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Donec id elit non mi porta.</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small class="text-muted">3 days ago</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Donec id elit non mi porta.</small>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="mt-5">
+                    <h3>Bình Luận</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <img class=" avatar" src="https://via.placeholder.com/150" alt="">
+                                <textarea class="input-comment" placeholder="nhập bình luận..." type="text"> 
+
+                            </textarea>
+                            </div>
+                            <div class="d-flex">
+                                <a class="ml-auto btn btn-secondary mt-4" href="#">Đăng bình luận</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <a class="none-line d-flex align-items-center" href="">
+                                    <img class="avatar" src="https://via.placeholder.com/150" alt="">
+                                    <div class="">Nguyễn Đông Hướng</div>
+                                </a>
+                                <div class="text-black-50">
+                                    ngày đăng
+                                </div>
+                            </div>
+                            <hr>
+                            <div>aaaaaaaaaabbbbbbbbbbbccccccccc </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-lg-none">
+    <div class="sticky-bottom-bar d-flex align-items-center justify-content-around">
+        <a class=" none-line d-flex justify-content-center" href="">
+            <img id="trigger" class="avatar mr-0" src="https://via.placeholder.com/150" alt="">
+
+        </a>
+        <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> </a>
+        <h5>20</h5>
+        <a href="#"><i class="fa fa-comments" aria-hidden="true"></i></a><h5>20</h5>
+        <a href="#"><i class="fa fa-share" aria-hidden="true"></i></a><h5>20</h5>
+    </div>
+
+</div>
+@section Scripts{ 
+    <script src="~/js/post.js"></script>
+}
+
