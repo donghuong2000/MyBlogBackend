@@ -10,6 +10,7 @@ namespace MyBlog.Data.Repository.IRepository
         ITagRepository Tag { get; }
         ISP_Call SP_Call { get; }
          IPostRepository Post { get; }
+         IUserRepository User { get; }
 
 
         void Save();

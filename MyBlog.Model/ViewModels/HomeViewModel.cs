@@ -10,5 +10,7 @@ namespace MyBlog.Models.ViewModels
         public List<Post> Posts { get; set; }
 
         public List<Post> BestPosts { get; set; }
+
+        
     }
 }

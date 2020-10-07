@@ -16,6 +16,7 @@ namespace MyBlog.Data.Repository
             SP_Call = new SP_Call(_db);
             Tag = new TagRepository(_db);
             Post = new PostRepository(_db);
+            User = new UserRepository(_db);
         }
 
 
@@ -26,6 +27,8 @@ namespace MyBlog.Data.Repository
         
 
         public IPostRepository Post { get; private set; }
+
+        public IUserRepository User { get; private set; }
 
         public void Dispose()
         {

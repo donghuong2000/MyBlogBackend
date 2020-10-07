@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyBlog.Data.Migrations
 {
-    public partial class init1 : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,9 +28,11 @@ namespace MyBlog.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserName = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
                     AvatarUrl = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true)
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    Active = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -48,7 +50,8 @@ namespace MyBlog.Data.Migrations
                     Content = table.Column<string>(nullable: true),
                     Like = table.Column<int>(nullable: false),
                     Share = table.Column<int>(nullable: false),
-                    UserID = table.Column<int>(nullable: false)
+                    UserID = table.Column<int>(nullable: true),
+                    Confirm = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,7 +61,7 @@ namespace MyBlog.Data.Migrations
                         column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

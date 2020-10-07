@@ -1,0 +1,30 @@
+﻿@model MyBlog.Models.ViewModels.RegisterViewModel
+@using Microsoft.AspNetCore.Http.Extensions
+
+<form id="regform" method="post" onsubmit="return false">
+    <div id="message-form" class="rounded"></div>
+    <div class="form-group">
+        <label asp-for="Username">UserName</label>
+        <input type="text" class="form-control" asp-for="Username" aria-describedby="emailHelp" placeholder="Enter username">
+        <span  class="alert-danger rounded " asp-validation-for="Username"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email">Email</label>
+        <input type="email" class="form-control" asp-for="Email" aria-describedby="emailHelp" placeholder="Enter Mail">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <span class="alert-danger rounded " asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password">Password</label>
+        <input type="password" class="form-control" asp-for="Password" placeholder="Password">
+        <span  class="alert-danger rounded " asp-validation-for="Password"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="ComfirmPassword">Confirm Password</label>
+        <input type="password" class="form-control" asp-for="ComfirmPassword" placeholder="Confirm Password">
+        <span  class="alert-danger rounded " asp-validation-for="ComfirmPassword"></span>
+
+    </div>
+    <button id="btn-signup" style="width:100%" class="btn btn-dark">Đăng ký</button>
+</form>

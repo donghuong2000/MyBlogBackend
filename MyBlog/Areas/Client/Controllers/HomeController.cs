@@ -22,6 +22,7 @@ namespace MyBlog.Areas.Client.Controllers
 
         public IActionResult Index()
         {
+            
             var home = new HomeViewModel();
             home.Posts = _db.Posts.Include(x => x.PostTags).ThenInclude(x => x.Tag)
                 .Where(x => x.Confirm == true)

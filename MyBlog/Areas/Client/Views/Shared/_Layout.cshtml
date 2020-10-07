@@ -1,4 +1,12 @@
-﻿<!doctype html>
+﻿@using Microsoft.AspNetCore.Http 
+@using MyBlog.Extension
+@inject IHttpContextAccessor httpcontextaccessor
+@{
+    
+    var x = httpcontextaccessor.HttpContext.Session.Get<MyBlog.Models.User>(SD.CurrentUser);
+
+}
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -31,13 +39,32 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">ABOUT</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">LOGIN</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">REGISTER</a>
-                        </li>
 
+                        @if (x != null)
+                        {
+                            <li class="nav-item dropdown">
+                                <div class="d-flex align-items-center avatar-link">
+                                    <img class="avatar-sm" src="https://via.placeholder.com/150" alt="">
+                                    <a class="nav-link " data-toggle="dropdown" href="#">@x.UserName</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Info</a>
+                                        <a class="dropdown-item" href="#">Post</a>
+                                        <a class="dropdown-item" asp-action="SignOut" asp-controller="User" asp-area="Client">Sign out</a>
+                                    </div>
+                                </div>
+
+
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="modal" data-target="#LoginModal">LOGIN</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="modal" data-target="#RegisterModal">REGISTER</a>
+                            </li>
+                        }
                     </ul>
 
                 </div>
@@ -52,20 +79,82 @@
         </div>
         <footer class="blog-footer">
         </footer>
+        <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="LoginModalLabel">Login</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex-column">
+                            <div class="d-flex justify-content-center">
+                                <a href="#"><i class="fa fa-google social-google mx-2" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fab fa-facebook social-facebook mx-2" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-github social-github mx-2" aria-hidden="true"></i></a>
+                            </div>
+                            <div id="loginpatial">
+                                <partial itemid="" name="_Login" model="ViewBag.Login" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="d-flex ">
+                            <a href="#" data-toggle="modal" data-dismiss="modal" data-target="#RegisterModal">Đăng kí tài khoản</a>|
+                            <a href="#">Quên mật khẩu</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="RegisterModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="RegisterModalLabel">Register</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex-column">
+                            <div class="d-flex justify-content-center">
+                                <a href="#"><i class="fa fa-google social-google mx-2" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fab fa-facebook social-facebook mx-2" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-github social-github mx-2" aria-hidden="true"></i></a>
+                            </div>
+                            <div id="reg-partial">
+                                <partial name="_Register" model="ViewBag.Register" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="d-flex ">
+                            <a href="#" data-toggle="modal" data-target="#LoginModal" data-dismiss="modal">Đăng nhập</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js">></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
             integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
             crossorigin="anonymous"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/js/fontawesomekit.js"></script>
-    @RenderSection("Scripts",false)
+    <script src="~/js/site.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    @RenderSection("Scripts", false)
 </body>
 
 </html>

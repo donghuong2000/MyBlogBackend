@@ -1,0 +1,22 @@
+﻿@model MyBlog.Models.ViewModels.LoginViewModel
+<form id="login-form" method="post" onsubmit="return false">
+    <div id="message-login-form" class="rounded"></div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">UserName</label>
+        <input class="form-control" asp-for="UserName" placeholder="Enter username">
+        <span class="alert-danger rounded " asp-validation-for="UserName"></span>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" asp-for="Password" placeholder="Password">
+        <span class="alert-danger rounded " asp-validation-for="Password"></span>
+        <small class="form-text text-muted">never share your password with anyone else.</small>
+
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button id="btn-login" style="width:100%" class="btn btn-dark">Đăng nhập</button>
+    
+</form>
