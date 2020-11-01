@@ -1,0 +1,30 @@
+﻿@model MyBlog.Models.ViewModels.UpdateProfileViewModel
+<div class="border">
+    <div class=" inner-tab">
+        <h3>Thông tin cá nhân</h3>
+        <small>Quản lí thông tin cá nhân</small>
+        <form asp-action="updateprofile" asp-controller="Profile" asp-area="client" enctype="multipart/form-data">
+            <div class="form-row">
+
+                <label asp-for="Email"></label>
+                <input type="email" class="form-control" asp-for="Email" placeholder="Email">
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input type="text" class="form-control"  asp-for="Name">
+            </div>
+            <div class="form-group">
+                <label asp-for="AvatarUrl" ></label>
+                <input class="form-control" asp-for="AvatarUrl" accept="image/*" >
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone">phone</label>
+                <input type="text" class="form-control"  asp-for="Phone">
+            </div>
+            <button type="submit" class="btn btn-primary">
+                Update
+            </button>
+        </form>
+    </div>
+</div>

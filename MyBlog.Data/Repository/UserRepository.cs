@@ -24,12 +24,13 @@ namespace MyBlog.Data.Repository
             {
                 obj.UserName = user.UserName;
                 obj.Password = user.Password;
-                obj.PhoneNumber = obj.PhoneNumber;
+                obj.PhoneNumber = user.PhoneNumber;
                 obj.Email = user.Email;
                 obj.Name = user.Name;
                 obj.AvatarUrl = user.AvatarUrl;
                 
             }
+           
 
         }
     }

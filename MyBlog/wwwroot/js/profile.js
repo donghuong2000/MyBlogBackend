@@ -115,21 +115,6 @@ function Delete(url) {
     })
 }
 
-function LockUnlock(idnum) {
-    $.ajax({
-        type: "POST",
-        url: "/Admin/Post/Lock",
-        data: JSON.stringify(idnum),
-        contentType: "application/json",
-        success: function (data) {
-            if (data.success == true) {
-                toastr.success(data.message);
-                $('#dataTable').DataTable().ajax.reload();
-            }
-            else {
-                toastr.error(data.message);
-            }
-        }
 
-    })
-}
+
+
