@@ -17,49 +17,49 @@
             <!-- đây là bài viiets-->
             @foreach (var item in Model.Posts)
             {
-            <div class="card mb-5 mt-2">
-                <div class="card-header d-flex align-items-center">
-                    <a href="#">
-                        <img class="avatar" src="https://via.placeholder.com/150" alt="">
-                    </a>
-                    <a class="post-title" href="/Client/Home/Detail/@item.ID">
-                        <h5>@item.Title</h5>
-                    </a>
-
-                </div>
-
-                <div class="card-body">
-                    <div class="mb-3">
-                        @foreach (var tag in item.PostTags)
-                        {
-                            <a href="#" class="badge badge-secondary">@tag.Tag.Name</a>
-                        }
-
+                <div class="card mb-5 mt-2">
+                    <div class="card-header d-flex align-items-center">
+                        <a href="#">
+                            <img class="avatar" src="https://via.placeholder.com/150" alt="">
+                        </a>
+                        <a class="post-title" href="/Client/Home/Detail/@item.ID">
+                            <h5>@item.Title</h5>
+                        </a>
 
                     </div>
-                    <div class=" row mb-3">
-                        <div class="col-4">
-                            <img class="img-fluid" src="https://via.placeholder.com/700x500" alt="">
-                        </div>
-                        <div class="col-8">
-                            <div class="card-text">
-                                @if (item.Content.Length > 101)
-                                {
 
-                                    @Html.Raw(item.Content.Substring(0, 100).Replace("img",""))
-                                }
-                                else
-                                {
-                                    @Html.Raw(item.Content.Replace("img", ""))
-                                }
-                                ...
+                    <div class="card-body">
+                        <div class="mb-3">
+                            @foreach (var tag in item.PostTags)
+                            {
+                                <a href="#" class="badge badge-secondary">@tag.Tag.Name</a>
+                            }
+
+
+                        </div>
+                        <div class=" row mb-3">
+                            <div class="col-4">
+                                <img class="img-fluid" src="https://via.placeholder.com/700x500" alt="">
                             </div>
-                            <div class="">@item.DateCreate</div>
+                            <div class="col-8">
+                                <div class="card-text">
+                                    @if (item.Content.Length > 101)
+                                    {
+
+                                        @Html.Raw(item.Content.Substring(0, 100).Replace("img", ""))
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw(item.Content.Replace("img", ""))
+                                    }
+                                    ...
+                                </div>
+                                <div class="">@item.DateCreate</div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
+                </div>
             }
             <div class="d-flex justify-content-center">
                 <nav aria-label="Page navigation example">
@@ -113,3 +113,8 @@
         </div>
     </div>
 </div>
+@section Scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

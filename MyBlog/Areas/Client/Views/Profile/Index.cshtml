@@ -50,19 +50,21 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>Tiêu đề</th>
-                                        <th>Độ Dài</th>
+                                        <th>Title</th>
+                                        <th>Content</th>
+                                        <th>Date</th>
                                         <th>Tags</th>
-                                        <th>Tình trạng</th>
+                                        <th>Comfirm</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>Tiêu đề</th>
-                                        <th>Độ Dài</th>
+                                        <th>Title</th>
+                                        <th>Content</th>
+                                        <th>Date</th>
                                         <th>Tags</th>
-                                        <th>Tình trạng</th>
+                                        <th>Comfirm</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
@@ -140,14 +142,18 @@
 
 
 @section Header{
-   
+    <link href="~/js/build/toastr.css" rel="stylesheet" />
 }
 
 @section Scripts{
 
-    
-    <script src="~/Admin/vendor/datatables/jquery.dataTables.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="~/Admin/vendor/datatables/dataTables.bootstrap4.js"></script>
+
+    <!-- cái này là của thông báo-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="~/js/build/toastr.min.js"></script>
     <script src="~/js/profile.js"></script>
 }
 
