@@ -47,8 +47,8 @@
                                     <img class="avatar-sm" src="~/Media/@x.AvatarUrl" alt="">
                                     <a class="nav-link " data-toggle="dropdown" href="#">@x.UserName</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Info</a>
-                                        <a class="dropdown-item" href="#">Post</a>
+                                        <a class="dropdown-item" asp-action="index" asp-controller="Profile" asp-area="Client">Info</a>
+                                        <a class="dropdown-item" asp-action="index" asp-controller="Profile" asp-area="Client">Post</a>
                                         <a class="dropdown-item" asp-action="SignOut" asp-controller="User" asp-area="Client">Sign out</a>
                                     </div>
                                 </div>

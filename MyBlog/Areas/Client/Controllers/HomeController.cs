@@ -24,7 +24,7 @@ namespace MyBlog.Areas.Client.Controllers
         {
             
             var home = new HomeViewModel();
-            home.Posts = _db.Posts.Include(x => x.PostTags).ThenInclude(x => x.Tag)
+            home.Posts = _db.Posts.Include(x=>x.User).Include(x => x.PostTags).ThenInclude(x => x.Tag)
                 .Where(x => x.Confirm == true)
                 .Select(x => x)
                 .OrderBy(x => x.DateCreate)

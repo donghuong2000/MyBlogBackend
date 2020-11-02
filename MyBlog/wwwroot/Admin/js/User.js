@@ -6,13 +6,14 @@
         "columns": [
             {
                 "data": {
-                    Avatar:"avatar",id:"id"
+                    avatar:"avatar",id:"id"
                 },
                 "render": function (data) {
+                   
                     return `
                             <div class="d-flex justify-content-between">
-                                <a class="none-line d-flex align-items-center" href="">
-                                    <img class="rounded-circle"src="https://via.placeholder.com/150" height="50" width ="50" alt="">
+                                <a class="none-line d-flex align-items-center" href="#">
+                                    <img class="rounded-circle"src="/Media/${data.avatar}" height="50" width ="50" alt="">
                                 </a>
                             </div>
                             `

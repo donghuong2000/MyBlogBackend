@@ -20,7 +20,8 @@
                 <div class="card mb-5 mt-2">
                     <div class="card-header d-flex align-items-center">
                         <a href="#">
-                            <img class="avatar" src="https://via.placeholder.com/150" alt="">
+                            
+                            <img class="avatar" src="/Media/@item.User.AvatarUrl" alt="">
                         </a>
                         <a class="post-title" href="/Client/Home/Detail/@item.ID">
                             <h5>@item.Title</h5>
@@ -43,15 +44,7 @@
                             </div>
                             <div class="col-8">
                                 <div class="card-text">
-                                    @if (item.Content.Length > 101)
-                                    {
-
-                                        @Html.Raw(item.Content.Substring(0, 100).Replace("img", ""))
-                                    }
-                                    else
-                                    {
-                                        @Html.Raw(item.Content.Replace("img", ""))
-                                    }
+                                    click to see more
                                     ...
                                 </div>
                                 <div class="">@item.DateCreate</div>
