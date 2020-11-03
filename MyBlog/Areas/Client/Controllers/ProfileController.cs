@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Razor.Language.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using MyBlog.Data.Data;
@@ -215,6 +216,15 @@ namespace MyBlog.Areas.Client.Controllers
             return View("Index");
         
             
+        }
+        [HttpPost]
+        public IActionResult Like(int Postid)
+        {
+            var post = _unitOfWork.Post.Get(Postid);
+            post.Like += 1;
+            _unitOfWork.Post.Update(post);
+            _unitOfWork.Save();
+            return Json(new { success = true });
         }
     }
 }

@@ -7,5 +7,19 @@ window.addEventListener("scroll",function(){
   else
   {
       document.getElementById("trigger").setAttribute("hidden", true);
-  }
+    }
 })
+
+
+
+function like(id) {
+    $.ajax({
+        method: "post",
+        url: '/Client/profile/like',
+        data: { Postid: id },
+        success: function (data) {
+            console.log(data);
+        }
+
+    })
+}

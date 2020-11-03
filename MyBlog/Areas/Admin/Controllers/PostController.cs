@@ -183,7 +183,7 @@ namespace MyBlog.Areas.Admin.Controllers
             {
                 obj.Confirm = !obj.Confirm;
                 _unitOfWork.Save();
-                return Json(new { success = true, message = "Lock Success" });
+                return Json(new { success = true, message = "Lock/Unlock Success" });
             }
         }
         #endregion

@@ -34,7 +34,7 @@ namespace MyBlog.Areas.Client.Controllers
         }
         public IActionResult Detail(int? id)
         {
-            var p = _db.Posts.Include(x => x.PostTags).ThenInclude(x => x.Tag).FirstOrDefault(x => x.ID == id);
+            var p = _db.Posts.Include(x=>x.User).Include(x => x.PostTags).ThenInclude(x => x.Tag).FirstOrDefault(x => x.ID == id);
             if (p == null)
                 return NotFound();
             return View(p);

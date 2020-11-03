@@ -4,7 +4,7 @@
 }
 
 .nav-item a {
-    color: white;
+    color: white !important;
     font-weight: bold;
     margin-left: 10px;
     margin-right: 10px;
@@ -15,7 +15,7 @@
     background-color: white;
     border-radius: 5px;
     transition: 0.2s;
-    color: black;
+    color: black !important;
 }
 
 .avatar {
@@ -161,4 +161,10 @@ a.active {
 
 .inner-tab {
     margin: 30px;
+}
+
+.content img {
+    max-width: 100%;
+    height: auto;
+}
 }
